@@ -1,6 +1,6 @@
-trait DivisibleBy {
-    fn is_divisible_by(self, num: i32) -> bool;
-    fn is_not_divisible_by(self, num: i32) -> bool;
+trait DivisibleBy<Dividend = Self> {
+    fn is_divisible_by(self, num: Dividend) -> bool;
+    fn is_not_divisible_by(self, num: Dividend) -> bool;
 }
 
 impl DivisibleBy for i32 {
