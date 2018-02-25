@@ -1,14 +1,11 @@
 package gigasecond
 
-// Write a function AddGigasecond that works with time.Time.
-
 import (
 	"os"
 	"testing"
 	"time"
 )
 
-// date formats used in test data
 const (
 	fmtD  = "2006-01-02"
 	fmtDT = "2006-01-02T15:04:05"
@@ -31,14 +28,11 @@ want %s`, tc.description, in, got, want)
 }
 
 func parse(s string, t *testing.T) time.Time {
-	tt, err := time.Parse(fmtDT, s) // try full date time format first
+	tt, err := time.Parse(fmtDT, s)
 	if err != nil {
-		tt, err = time.Parse(fmtD, s) // also allow just date
+		tt, err = time.Parse(fmtD, s)
 	}
 	if err != nil {
-		// can't run tests if input won't parse.  if this seems to be a
-		// development or ci environment, raise an error.  if this condition
-		// makes it to the solver though, ask for a bug report.
 		_, statErr := os.Stat("example_gen.go")
 		if statErr == nil || os.Getenv("TRAVIS_GO_VERSION") > "" {
 			t.Fatal(err)
