@@ -1,5 +1,6 @@
 object Leap {
   def leapYear(year: Int): Boolean = {
-    year % 4 == 0 && year % 100 != 0 || year % 400 == 0
+    val divisibleBy = (number: Int) => year % number == 0
+    divisibleBy(4) && !divisibleBy(100) || divisibleBy(400)
   }
 }
