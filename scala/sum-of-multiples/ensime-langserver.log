@@ -1,0 +1,116 @@
+[2018-02-25 14:39:20,024] INFO org.github.dragos.vscode.Main$ - Starting server in /Users/kelvin/Code/exercism/scala/sum-of-multiples
+[2018-02-25 14:39:20,024] INFO org.github.dragos.vscode.Main$ - Starting server in /Users/kelvin/Code/exercism/scala/sum-of-multiples
+[2018-02-25 14:39:20,056] INFO org.github.dragos.vscode.Main$ - Classpath: /Users/kelvin/.vscode/extensions/dragos.scala-lsp-0.2.2/coursier
+[2018-02-25 14:39:20,056] INFO org.github.dragos.vscode.Main$ - Classpath: /Users/kelvin/.vscode/extensions/dragos.scala-lsp-0.2.2/coursier
+[2018-02-25 14:39:20,191] DEBUG langserver.core.MessageReader - Received headers:
+Content-Length: 1229
+[2018-02-25 14:39:20,191] DEBUG langserver.core.MessageReader - Received headers:
+Content-Length: 1229
+[2018-02-25 14:39:20,214] DEBUG langserver.core.Connection - Received {"jsonrpc":"2.0","id":0,"method":"initialize","params":{"processId":36467,"rootPath":"/Users/kelvin/Code/exercism/scala/sum-of-multiples","rootUri":"file:///Users/kelvin/Code/exercism/scala/sum-of-multiples","capabilities":{"workspace":{"applyEdit":true,"didChangeConfiguration":{"dynamicRegistration":false},"didChangeWatchedFiles":{"dynamicRegistration":false},"symbol":{"dynamicRegistration":true},"executeCommand":{"dynamicRegistration":true}},"textDocument":{"synchronization":{"dynamicRegistration":true,"willSave":true,"willSaveWaitUntil":true,"didSave":true},"completion":{"dynamicRegistration":true,"completionItem":{"snippetSupport":true}},"hover":{"dynamicRegistration":true},"signatureHelp":{"dynamicRegistration":true},"references":{"dynamicRegistration":true},"documentHighlight":{"dynamicRegistration":true},"documentSymbol":{"dynamicRegistration":true},"formatting":{"dynamicRegistration":true},"rangeFormatting":{"dynamicRegistration":true},"onTypeFormatting":{"dynamicRegistration":true},"definition":{"dynamicRegistration":true},"codeAction":{"dynamicRegistration":true},"codeLens":{"dynamicRegistration":true},"documentLink":{"dynamicRegistration":true},"rename":{"dynamicRegistration":true}}},"trace":"off"}}
+[2018-02-25 14:39:20,214] DEBUG langserver.core.Connection - Received {"jsonrpc":"2.0","id":0,"method":"initialize","params":{"processId":36467,"rootPath":"/Users/kelvin/Code/exercism/scala/sum-of-multiples","rootUri":"file:///Users/kelvin/Code/exercism/scala/sum-of-multiples","capabilities":{"workspace":{"applyEdit":true,"didChangeConfiguration":{"dynamicRegistration":false},"didChangeWatchedFiles":{"dynamicRegistration":false},"symbol":{"dynamicRegistration":true},"executeCommand":{"dynamicRegistration":true}},"textDocument":{"synchronization":{"dynamicRegistration":true,"willSave":true,"willSaveWaitUntil":true,"didSave":true},"completion":{"dynamicRegistration":true,"completionItem":{"snippetSupport":true}},"hover":{"dynamicRegistration":true},"signatureHelp":{"dynamicRegistration":true},"references":{"dynamicRegistration":true},"documentHighlight":{"dynamicRegistration":true},"documentSymbol":{"dynamicRegistration":true},"formatting":{"dynamicRegistration":true},"rangeFormatting":{"dynamicRegistration":true},"onTypeFormatting":{"dynamicRegistration":true},"definition":{"dynamicRegistration":true},"codeAction":{"dynamicRegistration":true},"codeLens":{"dynamicRegistration":true},"documentLink":{"dynamicRegistration":true},"rename":{"dynamicRegistration":true}}},"trace":"off"}}
+[2018-02-25 14:39:20,642] INFO org.github.dragos.vscode.EnsimeLanguageServer - Initialized with 36467, /Users/kelvin/Code/exercism/scala/sum-of-multiples, ClientCapabilities()
+[2018-02-25 14:39:20,642] INFO org.github.dragos.vscode.EnsimeLanguageServer - Initialized with 36467, /Users/kelvin/Code/exercism/scala/sum-of-multiples, ClientCapabilities()
+[2018-02-25 14:39:20,644] DEBUG org.github.dragos.vscode.EnsimeLanguageServer - ensime.config = "/Users/kelvin/Code/exercism/scala/sum-of-multiples/.ensime" 
+[2018-02-25 14:39:20,644] DEBUG org.github.dragos.vscode.EnsimeLanguageServer - ensime.config = "/Users/kelvin/Code/exercism/scala/sum-of-multiples/.ensime" 
+[2018-02-25 14:39:21,117] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+[2018-02-25 14:39:21,911] INFO org.github.dragos.vscode.EnsimeLanguageServer - Using configuration: EnsimeConfig(RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples),RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/.ensime_cache),RawFile(/Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home),sum-of-multiples,2.12.4,List(-feature, -deprecation, -Xlint, -Ywarn-dead-code, -Ywarn-numeric-widen, -Xfuture, -Ymacro-expand:discard),List(RawFile(/Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip)),List(EnsimeProject(EnsimeProjectId(sum-of-multiples,compile),List(),Set(RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/src/main/java), RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/target/scala-2.12/src_managed/main), RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/src/main/scala-2.12), RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/src/main/scala)),Set(RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/target/scala-2.12/classes)),List(-feature, -deprecation, -Xlint, -Ywarn-dead-code, -Ywarn-numeric-widen, -Xfuture, -Ymacro-expand:discard),List(),List(RawFile(/Users/kelvin/.sbt/boot/scala-2.12.4/lib/scala-library.jar)),List(RawFile(/Users/kelvin/.ivy2/cache/org.scala-lang/scala-library/srcs/scala-library-2.12.4-sources.jar)),List(RawFile(/Users/kelvin/.ivy2/cache/org.scala-lang/scala-library/docs/scala-library-2.12.4-javadoc.jar), RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/target/scala-2.12/sum-of-multiples_2.12-0.1.0-SNAPSHOT-javadoc.jar))), EnsimeProject(EnsimeProjectId(sum-of-multiples,test),List(EnsimeProjectId(sum-of-multiples,compile)),Set(RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/src/test/java), RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/src/test/scala-2.12), RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/src/test/scala), RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/target/scala-2.12/src_managed/test)),Set(RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/target/scala-2.12/test-classes)),List(-feature, -deprecation, -Xlint, -Ywarn-dead-code, -Ywarn-numeric-widen, -Xfuture, -Ymacro-expand:discard),List(),List(RawFile(/Users/kelvin/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.12/bundles/scala-parser-combinators_2.12-1.0.4.jar), RawFile(/Users/kelvin/.sbt/boot/scala-2.12.4/lib/scala-reflect.jar), RawFile(/Users/kelvin/.ivy2/cache/org.scala-lang.modules/scala-xml_2.12/bundles/scala-xml_2.12-1.0.5.jar), RawFile(/Users/kelvin/.ivy2/cache/org.scalactic/scalactic_2.12/bundles/scalactic_2.12-3.0.1.jar), RawFile(/Users/kelvin/.ivy2/cache/org.scalatest/scalatest_2.12/bundles/scalatest_2.12-3.0.1.jar)),List(RawFile(/Users/kelvin/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.12/srcs/scala-parser-combinators_2.12-1.0.4-sources.jar), RawFile(/Users/kelvin/.ivy2/cache/org.scala-lang/scala-reflect/srcs/scala-reflect-2.12.4-sources.jar), RawFile(/Users/kelvin/.ivy2/cache/org.scala-lang.modules/scala-xml_2.12/srcs/scala-xml_2.12-1.0.5-sources.jar), RawFile(/Users/kelvin/.ivy2/cache/org.scalactic/scalactic_2.12/srcs/scalactic_2.12-3.0.1-sources.jar), RawFile(/Users/kelvin/.ivy2/cache/org.scalatest/scalatest_2.12/srcs/scalatest_2.12-3.0.1-sources.jar)),List(RawFile(/Users/kelvin/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.12/docs/scala-parser-combinators_2.12-1.0.4-javadoc.jar), RawFile(/Users/kelvin/.ivy2/cache/org.scala-lang/scala-reflect/docs/scala-reflect-2.12.4-javadoc.jar), RawFile(/Users/kelvin/.ivy2/cache/org.scala-lang.modules/scala-xml_2.12/docs/scala-xml_2.12-1.0.5-javadoc.jar), RawFile(/Users/kelvin/.ivy2/cache/org.scalactic/scalactic_2.12/docs/scalactic_2.12-3.0.1-javadoc.jar), RawFile(/Users/kelvin/.ivy2/cache/org.scalatest/scalatest_2.12/docs/scalatest_2.12-3.0.1-javadoc.jar)))))
+[2018-02-25 14:39:21,911] INFO org.github.dragos.vscode.EnsimeLanguageServer - Using configuration: EnsimeConfig(RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples),RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/.ensime_cache),RawFile(/Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home),sum-of-multiples,2.12.4,List(-feature, -deprecation, -Xlint, -Ywarn-dead-code, -Ywarn-numeric-widen, -Xfuture, -Ymacro-expand:discard),List(RawFile(/Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip)),List(EnsimeProject(EnsimeProjectId(sum-of-multiples,compile),List(),Set(RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/src/main/java), RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/target/scala-2.12/src_managed/main), RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/src/main/scala-2.12), RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/src/main/scala)),Set(RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/target/scala-2.12/classes)),List(-feature, -deprecation, -Xlint, -Ywarn-dead-code, -Ywarn-numeric-widen, -Xfuture, -Ymacro-expand:discard),List(),List(RawFile(/Users/kelvin/.sbt/boot/scala-2.12.4/lib/scala-library.jar)),List(RawFile(/Users/kelvin/.ivy2/cache/org.scala-lang/scala-library/srcs/scala-library-2.12.4-sources.jar)),List(RawFile(/Users/kelvin/.ivy2/cache/org.scala-lang/scala-library/docs/scala-library-2.12.4-javadoc.jar), RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/target/scala-2.12/sum-of-multiples_2.12-0.1.0-SNAPSHOT-javadoc.jar))), EnsimeProject(EnsimeProjectId(sum-of-multiples,test),List(EnsimeProjectId(sum-of-multiples,compile)),Set(RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/src/test/java), RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/src/test/scala-2.12), RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/src/test/scala), RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/target/scala-2.12/src_managed/test)),Set(RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/target/scala-2.12/test-classes)),List(-feature, -deprecation, -Xlint, -Ywarn-dead-code, -Ywarn-numeric-widen, -Xfuture, -Ymacro-expand:discard),List(),List(RawFile(/Users/kelvin/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.12/bundles/scala-parser-combinators_2.12-1.0.4.jar), RawFile(/Users/kelvin/.sbt/boot/scala-2.12.4/lib/scala-reflect.jar), RawFile(/Users/kelvin/.ivy2/cache/org.scala-lang.modules/scala-xml_2.12/bundles/scala-xml_2.12-1.0.5.jar), RawFile(/Users/kelvin/.ivy2/cache/org.scalactic/scalactic_2.12/bundles/scalactic_2.12-3.0.1.jar), RawFile(/Users/kelvin/.ivy2/cache/org.scalatest/scalatest_2.12/bundles/scalatest_2.12-3.0.1.jar)),List(RawFile(/Users/kelvin/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.12/srcs/scala-parser-combinators_2.12-1.0.4-sources.jar), RawFile(/Users/kelvin/.ivy2/cache/org.scala-lang/scala-reflect/srcs/scala-reflect-2.12.4-sources.jar), RawFile(/Users/kelvin/.ivy2/cache/org.scala-lang.modules/scala-xml_2.12/srcs/scala-xml_2.12-1.0.5-sources.jar), RawFile(/Users/kelvin/.ivy2/cache/org.scalactic/scalactic_2.12/srcs/scalactic_2.12-3.0.1-sources.jar), RawFile(/Users/kelvin/.ivy2/cache/org.scalatest/scalatest_2.12/srcs/scalatest_2.12-3.0.1-sources.jar)),List(RawFile(/Users/kelvin/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.12/docs/scala-parser-combinators_2.12-1.0.4-javadoc.jar), RawFile(/Users/kelvin/.ivy2/cache/org.scala-lang/scala-reflect/docs/scala-reflect-2.12.4-javadoc.jar), RawFile(/Users/kelvin/.ivy2/cache/org.scala-lang.modules/scala-xml_2.12/docs/scala-xml_2.12-1.0.5-javadoc.jar), RawFile(/Users/kelvin/.ivy2/cache/org.scalactic/scalactic_2.12/docs/scalactic_2.12-3.0.1-javadoc.jar), RawFile(/Users/kelvin/.ivy2/cache/org.scalatest/scalatest_2.12/docs/scalatest_2.12-3.0.1-javadoc.jar)))))
+[2018-02-25 14:39:21,920] INFO org.github.dragos.vscode.ensime.EnsimeActor - Starting problematic actor now
+[2018-02-25 14:39:21,920] INFO org.github.dragos.vscode.ensime.EnsimeActor - Starting problematic actor now
+[2018-02-25 14:39:21,923] INFO org.github.dragos.vscode.ensime.EnsimeActor - Created: Actor[akka://ENSIME/user/server/ensimeProject#-1227251199]
+[2018-02-25 14:39:21,923] INFO org.github.dragos.vscode.ensime.EnsimeActor - Created: Actor[akka://ENSIME/user/server/ensimeProject#-1227251199]
+[2018-02-25 14:39:21,943] DEBUG org.github.dragos.vscode.ensime.EnsimeProjectServer - Forwarding ConnectionInfoReq
+[2018-02-25 14:39:21,943] DEBUG org.github.dragos.vscode.ensime.EnsimeProjectServer - Forwarding ConnectionInfoReq
+[2018-02-25 14:39:21,955] INFO org.apache.commons.vfs2.impl.StandardFileSystemManager - Using "/var/folders/yd/kdsyfmm91jv7gj03pcq8b7jw0000gn/T/vfs_cache" as temporary files store.
+[2018-02-25 14:39:22,057] DEBUG langserver.core.MessageWriter - Content-Length: 441
+
+
+
+{"jsonrpc":"2.0","result":{"capabilities":{"textDocumentSync":1,"hoverProvider":true,"completionProvider":{"resolveProvider":false,"triggerCharacters":["."]},"definitionProvider":true,"referencesProvider":false,"documentHighlightProvider":false,"documentSymbolProvider":true,"workspaceSymbolProvider":false,"codeActionProvider":false,"documentFormattingProvider":false,"documentRangeFormattingProvider":false,"renameProvider":false}},"id":0}
+[2018-02-25 14:39:22,057] DEBUG langserver.core.MessageWriter - Content-Length: 441
+
+
+
+{"jsonrpc":"2.0","result":{"capabilities":{"textDocumentSync":1,"hoverProvider":true,"completionProvider":{"resolveProvider":false,"triggerCharacters":["."]},"definitionProvider":true,"referencesProvider":false,"documentHighlightProvider":false,"documentSymbolProvider":true,"workspaceSymbolProvider":false,"codeActionProvider":false,"documentFormattingProvider":false,"documentRangeFormattingProvider":false,"renameProvider":false}},"id":0}
+[2018-02-25 14:39:22,057] DEBUG langserver.core.MessageWriter - payload: {"jsonrpc":"2.0","result":{"capabilities":{"textDocumentSync":1,"hoverProvider":true,"completionProvider":{"resolveProvider":false,"triggerCharacters":["."]},"definitionProvider":true,"referencesProvider":false,"documentHighlightProvider":false,"documentSymbolProvider":true,"workspaceSymbolProvider":false,"codeActionProvider":false,"documentFormattingProvider":false,"documentRangeFormattingProvider":false,"renameProvider":false}},"id":0}
+[2018-02-25 14:39:22,057] DEBUG langserver.core.MessageWriter - payload: {"jsonrpc":"2.0","result":{"capabilities":{"textDocumentSync":1,"hoverProvider":true,"completionProvider":{"resolveProvider":false,"triggerCharacters":["."]},"definitionProvider":true,"referencesProvider":false,"documentHighlightProvider":false,"documentSymbolProvider":true,"workspaceSymbolProvider":false,"codeActionProvider":false,"documentFormattingProvider":false,"documentRangeFormattingProvider":false,"renameProvider":false}},"id":0}
+[2018-02-25 14:39:22,063] DEBUG langserver.core.MessageReader - Received headers:
+Content-Length: 52
+[2018-02-25 14:39:22,063] DEBUG langserver.core.MessageReader - Received headers:
+Content-Length: 52
+[2018-02-25 14:39:22,064] DEBUG langserver.core.Connection - Received {"jsonrpc":"2.0","method":"initialized","params":{}}
+[2018-02-25 14:39:22,064] DEBUG langserver.core.Connection - Received {"jsonrpc":"2.0","method":"initialized","params":{}}
+[2018-02-25 14:39:22,132] ERROR org.github.dragos.vscode.EnsimeLanguageServer - Unknown notification Initialized()
+[2018-02-25 14:39:22,132] ERROR org.github.dragos.vscode.EnsimeLanguageServer - Unknown notification Initialized()
+[2018-02-25 14:39:22,132] DEBUG langserver.core.MessageReader - Received headers:
+Content-Length: 431
+[2018-02-25 14:39:22,132] DEBUG langserver.core.MessageReader - Received headers:
+Content-Length: 431
+[2018-02-25 14:39:22,133] DEBUG langserver.core.Connection - Received {"jsonrpc":"2.0","method":"textDocument/didOpen","params":{"textDocument":{"uri":"file:///Users/kelvin/Code/exercism/scala/sum-of-multiples/src/main/scala/SumOfMultiples.scala","languageId":"scala","version":1,"text":"object SumOfMultiples {\n  def sum(factors: Set[Int], limit: Int): Int = {\n    val multiple = (factor: Int => Boolean) => { factor <= limit}\n    factors.map(factor => factor * (limit / factor)).sum\n  }\n}\n"}}}
+[2018-02-25 14:39:22,133] DEBUG langserver.core.Connection - Received {"jsonrpc":"2.0","method":"textDocument/didOpen","params":{"textDocument":{"uri":"file:///Users/kelvin/Code/exercism/scala/sum-of-multiples/src/main/scala/SumOfMultiples.scala","languageId":"scala","version":1,"text":"object SumOfMultiples {\n  def sum(factors: Set[Int], limit: Int): Int = {\n    val multiple = (factor: Int => Boolean) => { factor <= limit}\n    factors.map(factor => factor * (limit / factor)).sum\n  }\n}\n"}}}
+[2018-02-25 14:39:22,146] DEBUG org.github.dragos.vscode.ensime.EnsimeProjectServer - Forwarding TypecheckFileReq(SourceFileInfo(RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/src/main/scala/SumOfMultiples.scala),Some(...),None))
+[2018-02-25 14:39:22,146] DEBUG org.github.dragos.vscode.ensime.EnsimeProjectServer - Forwarding TypecheckFileReq(SourceFileInfo(RawFile(/Users/kelvin/Code/exercism/scala/sum-of-multiples/src/main/scala/SumOfMultiples.scala),Some(...),None))
+[2018-02-25 14:39:23,207] ERROR akka.actor.OneForOneStrategy - Lock held by another program: /Users/kelvin/Code/exercism/scala/sum-of-multiples/.ensime_cache/index-2.0.4/write.lock
+akka.actor.ActorInitializationException: akka://ENSIME/user/server/ensimeProject/project: exception during creation
+	at akka.actor.ActorInitializationException$.apply(Actor.scala:191)
+	at akka.actor.ActorCell.create(ActorCell.scala:608)
+	at akka.actor.ActorCell.invokeAll$1(ActorCell.scala:462)
+	at akka.actor.ActorCell.systemInvoke(ActorCell.scala:484)
+	at akka.dispatch.Mailbox.processAllSystemMessages(Mailbox.scala:282)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:223)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:234)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.lang.reflect.InvocationTargetException: null
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at akka.util.Reflect$.instantiate(Reflect.scala:65)
+	at akka.actor.ArgsReflectConstructor.produce(IndirectActorProducer.scala:96)
+	at akka.actor.Props.newActor(Props.scala:213)
+	at akka.actor.ActorCell.newActor(ActorCell.scala:563)
+	at akka.actor.ActorCell.create(ActorCell.scala:589)
+	... 9 common frames omitted
+Caused by: org.apache.lucene.store.LockObtainFailedException: Lock held by another program: /Users/kelvin/Code/exercism/scala/sum-of-multiples/.ensime_cache/index-2.0.4/write.lock
+	at org.apache.lucene.store.NativeFSLockFactory.obtainFSLock(NativeFSLockFactory.java:118)
+	at org.apache.lucene.store.FSLockFactory.obtainLock(FSLockFactory.java:41)
+	at org.apache.lucene.store.BaseDirectory.obtainLock(BaseDirectory.java:45)
+	at org.apache.lucene.index.IndexWriter.<init>(IndexWriter.java:804)
+	at org.ensime.indexer.lucene.SimpleLucene.<init>(SimpleLucene.scala:86)
+	at org.ensime.indexer.IndexService.<init>(IndexService.scala:99)
+	at org.ensime.indexer.SearchService.<init>(SearchService.scala:83)
+	at org.ensime.core.Project.<init>(Project.scala:49)
+	... 18 common frames omitted
+[2018-02-25 14:39:23,210] INFO akka.actor.LocalActorRef - Message [org.ensime.api.ConnectionInfoReq$] without sender to Actor[akka://ENSIME/user/server/ensimeProject/project#-1944190240] was not delivered. [1] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+[2018-02-25 14:39:23,212] INFO akka.actor.LocalActorRef - Message [org.ensime.api.TypecheckFileReq] without sender to Actor[akka://ENSIME/user/server/ensimeProject/project#-1944190240] was not delivered. [2] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+[2018-02-25 14:39:50,223] DEBUG langserver.core.MessageReader - Received headers:
+Content-Length: 58
+[2018-02-25 14:39:50,223] DEBUG langserver.core.MessageReader - Received headers:
+Content-Length: 58
+[2018-02-25 14:39:50,224] DEBUG langserver.core.Connection - Received {"jsonrpc":"2.0","id":1,"method":"shutdown","params":null}
+[2018-02-25 14:39:50,224] DEBUG langserver.core.Connection - Received {"jsonrpc":"2.0","id":1,"method":"shutdown","params":null}
+[2018-02-25 14:39:50,239] DEBUG langserver.core.MessageWriter - Content-Length: 198
+
+
+
+{"jsonrpc":"2.0","error":{"code":-32602,"message":"Invalid params","data":{"meaning":"Invalid method parameter(s).","error":{"obj":[{"msg":["command parameters must be given"],"args":[]}]}}},"id":1}
+[2018-02-25 14:39:50,239] DEBUG langserver.core.MessageWriter - Content-Length: 198
+
+
+
+{"jsonrpc":"2.0","error":{"code":-32602,"message":"Invalid params","data":{"meaning":"Invalid method parameter(s).","error":{"obj":[{"msg":["command parameters must be given"],"args":[]}]}}},"id":1}
+[2018-02-25 14:39:50,240] DEBUG langserver.core.MessageWriter - payload: {"jsonrpc":"2.0","error":{"code":-32602,"message":"Invalid params","data":{"meaning":"Invalid method parameter(s).","error":{"obj":[{"msg":["command parameters must be given"],"args":[]}]}}},"id":1}
+[2018-02-25 14:39:50,240] DEBUG langserver.core.MessageWriter - payload: {"jsonrpc":"2.0","error":{"code":-32602,"message":"Invalid params","data":{"meaning":"Invalid method parameter(s).","error":{"obj":[{"msg":["command parameters must be given"],"args":[]}]}}},"id":1}
+[2018-02-25 14:39:51,239] INFO langserver.core.MessageReader - End of stream, terminating thread
+[2018-02-25 14:39:51,239] INFO langserver.core.MessageReader - End of stream, terminating thread
+[2018-02-25 14:39:51,239] INFO org.github.dragos.vscode.EnsimeLanguageServer - Shutdown request
+[2018-02-25 14:39:51,239] INFO org.github.dragos.vscode.EnsimeLanguageServer - Shutdown request
+[2018-02-25 14:39:51,239] INFO org.github.dragos.vscode.EnsimeLanguageServer - Shutting down actor system.
+[2018-02-25 14:39:51,239] INFO org.github.dragos.vscode.EnsimeLanguageServer - Shutting down actor system.
+[2018-02-25 14:39:51,243] INFO org.github.dragos.vscode.ensime.EnsimeProjectServer - Shutting down.
+[2018-02-25 14:39:51,243] INFO org.github.dragos.vscode.ensime.EnsimeProjectServer - Shutting down.
+[2018-02-25 14:39:51,276] INFO org.github.dragos.vscode.EnsimeLanguageServer - Actor system down.
+[2018-02-25 14:39:51,276] INFO org.github.dragos.vscode.EnsimeLanguageServer - Actor system down.
