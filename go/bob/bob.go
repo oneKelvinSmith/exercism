@@ -5,49 +5,53 @@ import (
 	"unicode"
 )
 
-const (
-	upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-)
-
 // Remark is a convenience type for identifying what kind of remark it is.
 type Remark struct {
 	remark string
 }
 
 func (r Remark) isSilence() bool {
-	return strings.TrimSpace(r.remark) == ""
+	return r.remark == ""
 }
 
 func (r Remark) isShouting() bool {
-	trimmed := strings.TrimFunc(r.remark, func(char rune) bool {
-		return unicode.IsDigit(char) ||
-			unicode.IsPunct(char) ||
-			unicode.IsSpace(char)
+	const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+	if !strings.ContainsAny(r.remark, uppercase) {
+		return false
+	}
+
+	trimmed := strings.TrimFunc(r.remark, func(c rune) bool {
+		return unicode.IsDigit(c) || unicode.IsPunct(c)
 	})
 
-	return strings.ToUpper(trimmed) == trimmed &&
-		strings.ContainsAny(r.remark, upper)
+	return strings.ToUpper(trimmed) == trimmed
 }
 
 func (r Remark) isQuestion() bool {
-	trimmed := strings.TrimSpace(r.remark)
-	return strings.HasSuffix(trimmed, "?")
+	return strings.HasSuffix(r.remark, "?")
+}
+
+func (r Remark) isExasperated() bool {
+	return r.isShouting() && r.isQuestion()
+}
+
+func newRemark(remark string) Remark {
+	return Remark{strings.TrimSpace(remark)}
 }
 
 // Hey greets with an appropriate remark.
 func Hey(remark string) string {
-	r := Remark{remark}
+	r := newRemark(remark)
 	switch {
 	case r.isSilence():
 		return "Fine. Be that way!"
+	case r.isExasperated():
+		return "Calm down, I know what I'm doing!"
 	case r.isShouting():
-		if r.isQuestion() {
-			return "Calm down, I know what I'm doing!"
-		}
 		return "Whoa, chill out!"
 	case r.isQuestion():
 		return "Sure."
-
 	default:
 		return "Whatever."
 	}
