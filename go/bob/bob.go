@@ -15,17 +15,12 @@ func (r Remark) isSilence() bool {
 }
 
 func (r Remark) isShouting() bool {
-	const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	hasLetters := strings.IndexFunc(r.remark, func(c rune) bool {
+		return unicode.IsLetter(c)
+	}) >= 0
+	isUpcased := strings.ToUpper(r.remark) == r.remark
 
-	if !strings.ContainsAny(r.remark, uppercase) {
-		return false
-	}
-
-	trimmed := strings.TrimFunc(r.remark, func(c rune) bool {
-		return unicode.IsDigit(c) || unicode.IsPunct(c)
-	})
-
-	return strings.ToUpper(trimmed) == trimmed
+	return hasLetters && isUpcased
 }
 
 func (r Remark) isQuestion() bool {
