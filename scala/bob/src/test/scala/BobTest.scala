@@ -45,37 +45,30 @@ class BobTest extends FunSuite with Matchers {
   }
 
   test("only numbers") {
-    pending
     Bob.response("1, 2, 3") should be ("Whatever.")
   }
 
   test("question with only numbers") {
-    pending
     Bob.response("4?") should be ("Sure.")
   }
 
   test("shouting with special characters") {
-    pending
     Bob.response("ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!") should be ("Whoa, chill out!")
   }
 
   test("shouting with no exclamation mark") {
-    pending
     Bob.response("I HATE YOU") should be ("Whoa, chill out!")
   }
 
   test("statement containing question mark") {
-    pending
     Bob.response("Ending with ? means a question.") should be ("Whatever.")
   }
 
   test("non-letters with question") {
-    pending
     Bob.response(":) ?") should be ("Sure.")
   }
 
   test("prattling on") {
-    pending
     Bob.response("Wait! Hang on. Are you going to be OK?") should be ("Sure.")
   }
 

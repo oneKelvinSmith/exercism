@@ -1,6 +1,9 @@
 object Bob {
   case class Remark(statement: String) {
-    def isShouting    = statement.toUpperCase == statement
+    def isShouting = {
+      statement.indexWhere(char => char.isLetter) >= 0 &&
+        statement.toUpperCase == statement
+    }
     def isQuestioning = statement.endsWith("?")
   }
 
@@ -36,8 +39,8 @@ object Bob {
 
   def response(statement: String): String = Remark(statement) match {
     case ForcefulQuestion(reply) => reply
-    case Shout(reply)            => reply
     case Question(reply)         => reply
+    case Shout(reply)            => reply
     case _                       => "Whatever."
   }
 }
