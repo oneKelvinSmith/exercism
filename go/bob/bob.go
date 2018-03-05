@@ -15,9 +15,7 @@ func (r Remark) isSilence() bool {
 }
 
 func (r Remark) isShouting() bool {
-	hasLetters := strings.IndexFunc(r.remark, func(c rune) bool {
-		return unicode.IsLetter(c)
-	}) >= 0
+	hasLetters := strings.IndexFunc(r.remark, unicode.IsLetter) >= 0
 	isUpcased := strings.ToUpper(r.remark) == r.remark
 
 	return hasLetters && isUpcased
