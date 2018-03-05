@@ -85,30 +85,25 @@ class BobTest extends FunSuite with Matchers {
   }
 
   test("multiple line question") {
-    pending
     Bob.response("""
 Does this cryogenic chamber make me look fat?
 no""") should be ("Whatever.")
   }
 
   test("starting with whitespace") {
-    pending
     Bob.response("         hmmmmmmm...") should be ("Whatever.")
   }
 
   test("ending with whitespace") {
-    pending
     Bob.response("Okay if like my  spacebar  quite a bit?   ") should be ("Sure.")
   }
 
   test("other whitespace") {
-    pending
     Bob.response("""
                   """) should be ("Fine. Be that way!")
   }
 
   test("non-question ending with whitespace") {
-    pending
     Bob.response("This is a statement ending with whitespace      ") should be ("Whatever.")
   }
 }
