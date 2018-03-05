@@ -9,37 +9,30 @@ class BobTest extends FunSuite with Matchers {
   }
 
   test("shouting") {
-    pending
     Bob.response("WATCH OUT!") should be ("Whoa, chill out!")
   }
 
   test("shouting gibberish") {
-    pending
     Bob.response("FCECDFCAAB") should be ("Whoa, chill out!")
   }
 
   test("asking a question") {
-    pending
     Bob.response("Does this cryogenic chamber make me look fat?") should be ("Sure.")
   }
 
   test("asking a numeric question") {
-    pending
     Bob.response("You are, what, like 15?") should be ("Sure.")
   }
 
   test("asking gibberish") {
-    pending
     Bob.response("fffbbcbeab?") should be ("Sure.")
   }
 
   test("talking forcefully") {
-    pending
     Bob.response("Let's go make out behind the gym!") should be ("Whatever.")
   }
 
   test("using acronyms in regular speech") {
-    pending
     Bob.response("It's OK if you don't want to go to the DMV.") should be ("Whatever.")
   }
 
@@ -123,7 +116,7 @@ no""") should be ("Whatever.")
   test("other whitespace") {
     pending
     Bob.response("""
-                 	""") should be ("Fine. Be that way!")
+                  """) should be ("Fine. Be that way!")
   }
 
   test("non-question ending with whitespace") {
