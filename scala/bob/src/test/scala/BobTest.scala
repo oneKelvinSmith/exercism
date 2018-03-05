@@ -37,12 +37,10 @@ class BobTest extends FunSuite with Matchers {
   }
 
   test("forceful question") {
-    pending
     Bob.response("WHAT THE HELL WERE YOU THINKING?") should be ("Calm down, I know what I'm doing!")
   }
 
   test("shouting numbers") {
-    pending
     Bob.response("1, 2, 3 GO!") should be ("Whoa, chill out!")
   }
 
