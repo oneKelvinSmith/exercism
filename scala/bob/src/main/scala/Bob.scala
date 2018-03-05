@@ -1,10 +1,12 @@
 object Bob {
-  case class Remark(statement: String)
+  case class Remark(statement: String) {
+    def isShouting    = statement.toUpperCase == statement
+    def isQuestioning = statement.endsWith("?")
+  }
 
   object Shout {
     def unapply(remark: Remark): Option[String] = {
-      val isShouting = remark.statement.toUpperCase() == remark.statement
-      if (isShouting) {
+      if (remark.isShouting) {
         Some("Whoa, chill out!")
       } else {
         None
@@ -14,8 +16,7 @@ object Bob {
 
   object Question {
     def unapply(remark: Remark): Option[String] = {
-      val isQuestioning = remark.statement.endsWith("?")
-      if (isQuestioning) {
+      if (remark.isQuestioning) {
         Some("Sure.")
       } else {
         None
@@ -25,10 +26,7 @@ object Bob {
 
   object ForcefulQuestion {
     def unapply(remark: Remark): Option[String] = {
-      val isShouting = remark.statement.toUpperCase() == remark.statement
-      val isQuestioning = remark.statement.endsWith("?")
-
-      if (isQuestioning && isShouting) {
+      if (remark.isQuestioning && remark.isShouting) {
         Some("Calm down, I know what I'm doing!")
       } else {
         None
