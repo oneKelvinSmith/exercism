@@ -5,6 +5,7 @@ object Bob {
         statement.toUpperCase == statement
     }
     def isQuestioning = statement.endsWith("?")
+    def isSilence     = statement.trim.isEmpty
   }
 
   object Shout {
@@ -37,10 +38,21 @@ object Bob {
     }
   }
 
+  object Silence {
+    def unapply(remark: Remark): Option[String] = {
+      if (remark.isSilence) {
+        Some("Fine. Be that way!")
+      } else {
+        None
+      }
+    }
+  }
+
   def response(statement: String): String = Remark(statement) match {
     case ForcefulQuestion(reply) => reply
     case Question(reply)         => reply
     case Shout(reply)            => reply
+    case Silence(reply)          => reply
     case _                       => "Whatever."
   }
 }
