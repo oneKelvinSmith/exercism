@@ -5,7 +5,7 @@ object Bob {
       statement.indexWhere(char => char.isLetter) >= 0 &&
         statement.toUpperCase == statement
     }
-    def isSilence: Boolean = statement.trim.isEmpty
+    def isSilence: Boolean = statement.isEmpty
   }
 
   object ForcefulQuestion {
