@@ -5,15 +5,15 @@ import "strconv"
 // Convert is fizzbuzz for the factors 3, 5 and 7.
 func Convert(number int) string {
 	raindrop := ""
-	if number%3 == 0 {
+	if factorOf(number, 3) {
 		raindrop += "Pling"
 	}
 
-	if number%5 == 0 {
+	if factorOf(number, 5) {
 		raindrop += "Plang"
 	}
 
-	if number%7 == 0 {
+	if factorOf(number, 7) {
 		raindrop += "Plong"
 	}
 
@@ -22,4 +22,8 @@ func Convert(number int) string {
 	}
 
 	return raindrop
+}
+
+func factorOf(number, factor int) bool {
+	return number%factor == 0
 }
