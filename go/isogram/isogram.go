@@ -8,7 +8,7 @@ import (
 // IsIsogram determines if a given string is a word without repeating letters.
 func IsIsogram(word string) bool {
 	letters := filter(word)
-	letters.reverseSort()
+	sort.Sort(letters)
 
 	for index := 0; index < len(letters)-1; index++ {
 		if letters[index] == letters[index+1] {
@@ -29,14 +29,10 @@ func filter(word string) sortable {
 	return sortable(letters)
 }
 
-func (letters sortable) reverseSort() {
-	sort.Sort(letters)
-}
-
 type sortable []rune
 
 func (letters sortable) Less(left, right int) bool {
-	return letters[left] > letters[right]
+	return letters[left] < letters[right]
 }
 
 func (letters sortable) Swap(left, right int) {
