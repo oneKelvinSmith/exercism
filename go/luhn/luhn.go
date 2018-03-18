@@ -1,8 +1,7 @@
 package luhn
 
 import (
-	"errors"
-	"unicode"
+	"strconv"
 )
 
 // Valid returns true if the given number is valid per the Luhn formula.
@@ -16,31 +15,29 @@ func Valid(input string) bool {
 }
 
 func filter(input string) (number []int, err error) {
-	var char rune
-	for i := len(input) - 1; i >= 0; i-- {
-		char = rune(input[i])
-
-		if unicode.IsLetter(char) || unicode.IsPunct(char) || unicode.IsSymbol(char) {
-			return nil, errors.New("invalid character present")
+	for _, char := range input {
+		if char == ' ' {
+			continue
 		}
 
-		if unicode.IsDigit(char) {
-			number = append(number, int(char-'0'))
+		digit, err := strconv.Atoi(string(char))
+		if err != nil {
+			return nil, err
 		}
+
+		number = append(number, digit)
 	}
 
 	return
 }
 
 func luhnSum(number []int) (sum int) {
-	var double int
 	for index, digit := range number {
-		if index%2 != 0 {
-			double = digit * 2
-			if double > 9 {
-				double -= 9
+		if (len(number)-index)%2 == 0 {
+			digit *= 2
+			if digit > 9 {
+				digit -= 9
 			}
-			digit = double
 		}
 		sum += digit
 	}
