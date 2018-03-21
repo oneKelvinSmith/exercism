@@ -1,9 +1,9 @@
 package letter
 
-import "sync"
-
+// FreqMap represents the frequencies of letters.
 type FreqMap map[rune]int
 
+// Frequency returns the number of occurances of each unicode letter in a string.
 func Frequency(s string) FreqMap {
 	m := FreqMap{}
 	for _, r := range s {
@@ -13,33 +13,23 @@ func Frequency(s string) FreqMap {
 }
 
 // ConcurrentFrequency returns the number of each unicode letter in a group of texts.
-func ConcurrentFrequency(texts []string) FreqMap {
-	frequencies := &concurrentFreqMap{freqMap: FreqMap{}}
-	channel := make(chan *concurrentFreqMap)
+func ConcurrentFrequency(texts []string) (frequencies FreqMap) {
+	channel := make(chan FreqMap)
+	defer close(channel)
 
 	for _, text := range texts {
-		go channelledFrequency(text, frequencies, channel)
+		go func(text string) {
+			channel <- Frequency(text)
+		}(text)
 	}
 
+	frequencies = FreqMap{}
 	for range texts {
-		<-channel
+		result := <-channel
+		for letter := range result {
+			frequencies[letter] += result[letter]
+		}
 	}
 
-	return frequencies.freqMap
-}
-
-type concurrentFreqMap struct {
-	sync.RWMutex
-	freqMap FreqMap
-}
-
-func channelledFrequency(text string, frequencies *concurrentFreqMap, channel chan *concurrentFreqMap) {
-	frequencies.Lock()
-	defer frequencies.Unlock()
-
-	for _, letter := range text {
-		frequencies.freqMap[letter]++
-	}
-
-	channel <- frequencies
+	return
 }
