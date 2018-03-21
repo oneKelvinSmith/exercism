@@ -1,26 +1,35 @@
 package letter
 
+import "sync"
+
 // ConcurrentFrequency returns the number of each unicode letter in a group of texts.
-func ConcurrentFrequency(texts []string) (frequencies FreqMap) {
-	frequencies = make(FreqMap)
-	results := make(chan FreqMap, len(texts))
+func ConcurrentFrequency(texts []string) FreqMap {
+	frequencies := &concurrentFreqMap{freqMap: FreqMap{}}
+	channel := make(chan *concurrentFreqMap)
 
 	for _, text := range texts {
-		go channelledFrequency(text, results)
+		go channelledFrequency(text, frequencies, channel)
 	}
 
-	var channelFrequencies FreqMap
 	for range texts {
-		channelFrequencies = <-results
-
-		for letter := range channelFrequencies {
-			frequencies[letter] += channelFrequencies[letter]
-		}
+		<-channel
 	}
 
-	return
+	return frequencies.freqMap
 }
 
-func channelledFrequency(text string, results chan FreqMap) {
-	results <- Frequency(text)
+type concurrentFreqMap struct {
+	sync.RWMutex
+	freqMap FreqMap
+}
+
+func channelledFrequency(text string, frequencies *concurrentFreqMap, channel chan *concurrentFreqMap) {
+	frequencies.Lock()
+	defer frequencies.Unlock()
+
+	for _, letter := range text {
+		frequencies.freqMap[letter]++
+	}
+
+	channel <- frequencies
 }
