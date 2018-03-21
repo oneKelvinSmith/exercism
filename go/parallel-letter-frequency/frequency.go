@@ -14,22 +14,27 @@ func Frequency(s string) FreqMap {
 
 // ConcurrentFrequency returns the number of each unicode letter in a group of texts.
 func ConcurrentFrequency(texts []string) (frequencies FreqMap) {
-	channel := make(chan FreqMap)
-	defer close(channel)
+	counting := make(chan FreqMap)
 
 	for _, text := range texts {
 		go func(text string) {
-			channel <- Frequency(text)
+			counting <- Frequency(text)
 		}(text)
 	}
 
 	frequencies = FreqMap{}
-	for range texts {
-		result := <-channel
-		for letter := range result {
-			frequencies[letter] += result[letter]
+	finished := make(chan bool)
+	go func() {
+		for range texts {
+			result := <-counting
+			for letter, count := range result {
+				frequencies[letter] += count
+			}
 		}
-	}
+		finished <- true
+	}()
+
+	<-finished
 
 	return
 }
