@@ -1,107 +1,94 @@
 package tree
 
 import (
-	"errors"
 	"fmt"
+	"sort"
 )
 
+// Record represents an input to the tree.
 type Record struct {
 	ID, Parent int
 }
 
+func (record *Record) isRoot() bool {
+	return record.ID == 0
+}
+func (record *Record) isChild() bool {
+	return !record.isRoot()
+}
+func (record *Record) isChildOf(node *Node) bool {
+	return record.isChild() && record.Parent == node.ID
+}
+
+// Node represents a component of a tree.
 type Node struct {
 	ID       int
 	Children []*Node
 }
 
-type Mismatch struct{}
-
-func (m Mismatch) Error() string {
-	return "c"
-}
-
-func Build(records []Record) (*Node, error) {
-	if len(records) == 0 {
-		return nil, nil
-	}
-	root := &Node{}
-	todo := []*Node{root}
-	n := 1
-	for {
-		if len(todo) == 0 {
-			break
-		}
-		newTodo := []*Node(nil)
-		for _, c := range todo {
-			for _, r := range records {
-				if r.Parent == c.ID {
-					if r.ID < c.ID {
-						return nil, errors.New("a")
-					} else if r.ID == c.ID {
-						if r.ID != 0 {
-							return nil, fmt.Errorf("b")
-						}
-					} else {
-						n++
-						switch len(c.Children) {
-						case 0:
-							nn := &Node{ID: r.ID}
-							c.Children = []*Node{nn}
-							newTodo = append(newTodo, nn)
-						case 1:
-							nn := &Node{ID: r.ID}
-							if c.Children[0].ID < r.ID {
-								c.Children = []*Node{c.Children[0], nn}
-								newTodo = append(newTodo, nn)
-							} else {
-								c.Children = []*Node{nn, c.Children[0]}
-								newTodo = append(newTodo, nn)
-							}
-						default:
-							nn := &Node{ID: r.ID}
-							newTodo = append(newTodo, nn)
-						breakpoint:
-							for range []bool{false} {
-								for i, cc := range c.Children {
-									if cc.ID > r.ID {
-										a := make([]*Node, len(c.Children)+1)
-										copy(a, c.Children[:i])
-										copy(a[i+1:], c.Children[i:])
-										copy(a[i:i+1], []*Node{nn})
-										c.Children = a
-										break breakpoint
-									}
-								}
-								c.Children = append(c.Children, nn)
-							}
-						}
-					}
-				}
-			}
-		}
-		todo = newTodo
-	}
-	if n != len(records) {
-		return nil, Mismatch{}
-	}
-	if err := chk(root, len(records)); err != nil {
-		return nil, err
-	}
-	return root, nil
-}
-
-func chk(n *Node, m int) (err error) {
-	if n.ID > m {
-		return fmt.Errorf("z")
-	} else if n.ID == m {
-		return fmt.Errorf("y")
-	} else {
-		for i := 0; i < len(n.Children); i++ {
-			err = chk(n.Children[i], m)
-			if err != nil {
-				return
-			}
-		}
+func (node *Node) build(records []Record, size int) {
+	if size == len(records) {
 		return
 	}
+	size++
+
+	for _, record := range records {
+		if record.isChildOf(node) {
+			child := &Node{ID: record.ID}
+			child.build(records, size)
+
+			node.Children = append(node.Children, child)
+			node.sortChildren()
+		}
+	}
+}
+func (node *Node) sortChildren() {
+	sort.Sort(node)
+}
+func (node *Node) Len() int {
+	return len(node.Children)
+}
+func (node *Node) Swap(i, j int) {
+	node.Children[i], node.Children[j] = node.Children[j], node.Children[i]
+}
+func (node *Node) Less(i, j int) bool {
+	return node.Children[i].ID < node.Children[j].ID
+}
+
+func validate(records []Record) (err error) {
+	for index, record := range records {
+		if index >= 1 && record.ID == records[index-1].ID {
+			return fmt.Errorf("duplicate record found")
+		}
+		if record.ID >= len(records) {
+			return fmt.Errorf("records not contiguous")
+		}
+		if record.ID < record.Parent {
+			return fmt.Errorf("indirect cycle detected")
+		}
+		if record.isChild() && record.ID == record.Parent {
+			return fmt.Errorf("cycle detected")
+		}
+		if record.isRoot() && record.Parent != 0 {
+			return fmt.Errorf("root has a parent")
+		}
+	}
+	return
+}
+
+// Build contructs a valid tree from a slice of records.
+func Build(records []Record) (root *Node, err error) {
+	if len(records) == 0 {
+		return
+	}
+
+	err = validate(records)
+	if err != nil {
+		return nil, err
+	}
+
+	root = &Node{}
+	root.build(records, 1)
+
+	return
 }
