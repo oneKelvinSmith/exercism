@@ -38,21 +38,14 @@ func (node *Node) build(records []Record, size int) {
 			child.build(records, size)
 
 			node.Children = append(node.Children, child)
-			node.sortChildren()
 		}
 	}
 }
-func (node *Node) sortChildren() {
-	sort.Sort(node)
-}
-func (node *Node) Len() int {
-	return len(node.Children)
-}
-func (node *Node) Swap(i, j int) {
-	node.Children[i], node.Children[j] = node.Children[j], node.Children[i]
-}
-func (node *Node) Less(i, j int) bool {
-	return node.Children[i].ID < node.Children[j].ID
+
+func reorder(records []Record) {
+	sort.Slice(records, func(i, j int) bool {
+		return records[i].ID < records[j].ID
+	})
 }
 
 func validate(records []Record) (err error) {
@@ -86,6 +79,8 @@ func Build(records []Record) (root *Node, err error) {
 	if err != nil {
 		return nil, err
 	}
+
+	reorder(records)
 
 	root = &Node{}
 	root.build(records, 1)
