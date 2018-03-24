@@ -1,6 +1,7 @@
 package robotname
 
 import (
+	"math"
 	"math/rand"
 	"strconv"
 	"time"
@@ -8,45 +9,57 @@ import (
 
 // Robot represents a robotic entity.
 type Robot struct {
-	name    string
-	isNamed bool
+	name string
 }
 
 // Name returns the identifier for a Robot.
 func (robot *Robot) Name() string {
-	if robot.isNamed {
+	if robot.isNamed() {
 		return robot.name
 	}
 
-	robot.name = generateName()
-	robot.isNamed = true
+	robot.generateName()
 
 	return robot.name
 }
 
 // Reset clears the Robot's identifier so that a new one can be generated.
 func (robot *Robot) Reset() {
-	robot.isNamed = false
+	robot.name = ""
 }
 
-func generateName() string {
-	r := rand.New(rand.NewSource(time.Now().UnixNano()))
-	return randomLetter(r) +
-		randomLetter(r) +
-		randomDigit(r) +
-		randomDigit(r) +
-		randomDigit(r)
+func (robot *Robot) isNamed() bool {
+	return robot.name != ""
 }
 
-func randomLetter(generator *rand.Rand) string {
-	const letterMax = 25
-	const letterOffset = 65
+func (robot *Robot) generateName() {
+	const letterCount = 2
+	const digitCount = 3
 
-	return string(generator.Intn(letterMax) + letterOffset)
+	rand.Seed(time.Now().UnixNano())
+
+	robot.name = randomLetters(letterCount) + randomDigits(digitCount)
 }
 
-func randomDigit(generator *rand.Rand) string {
-	const numberMax = 9
+func randomLetters(size int) string {
+	const asciiRange = 25
+	const asciiOffset = 65
 
-	return strconv.Itoa(generator.Intn(numberMax))
+	letters := make([]rune, size)
+	for index := 0; index < size; index++ {
+		letters[index] = rune(rand.Intn(asciiRange) + asciiOffset)
+	}
+
+	return string(letters)
+}
+
+func randomDigits(size int) string {
+	const base = 10
+
+	digits := 0
+	for index := 0; index < size; index++ {
+		digits += int(math.Pow(base, float64(index))) * rand.Intn(base-1)
+	}
+
+	return strconv.Itoa(digits)
 }
