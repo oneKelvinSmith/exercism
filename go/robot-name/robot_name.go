@@ -1,7 +1,6 @@
 package robotname
 
 import (
-	"math"
 	"math/rand"
 	"strconv"
 	"time"
@@ -41,25 +40,24 @@ func (robot *Robot) generateName() {
 	robot.name = randomLetters(letterCount) + randomDigits(digitCount)
 }
 
-func randomLetters(size int) string {
-	const asciiRange = 25
+func randomLetters(size int) (letters string) {
+	const base = 26
 	const asciiOffset = 65
 
-	letters := make([]rune, size)
+	letters = ""
 	for index := 0; index < size; index++ {
-		letters[index] = rune(rand.Intn(asciiRange) + asciiOffset)
+		letters += string(rand.Intn(base) + asciiOffset)
 	}
 
-	return string(letters)
+	return
 }
 
-func randomDigits(size int) string {
+func randomDigits(size int) (digits string) {
 	const base = 10
 
-	digits := 0
 	for index := 0; index < size; index++ {
-		digits += int(math.Pow(base, float64(index))) * rand.Intn(base-1)
+		digits += strconv.Itoa(rand.Intn(base))
 	}
 
-	return strconv.Itoa(digits)
+	return
 }
