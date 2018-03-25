@@ -6,6 +6,8 @@ import (
 	"time"
 )
 
+var used = make(map[string]bool)
+
 // Robot represents a robotic entity.
 type Robot struct {
 	name string
@@ -32,31 +34,45 @@ func (robot *Robot) isNamed() bool {
 }
 
 func (robot *Robot) generateName() {
-	const letterCount = 2
-	const digitCount = 3
+	robot.name = randomLetters(2) + randomDigits(3)
 
-	rand.Seed(time.Now().UnixNano())
-
-	robot.name = randomLetters(letterCount) + randomDigits(digitCount)
+	robot.verifyName()
 }
 
-func randomLetters(size int) (letters string) {
+func (robot *Robot) verifyName() {
+	if used[robot.name] {
+		robot.generateName()
+	} else {
+		used[robot.name] = true
+	}
+}
+
+func randomLetters(count int) string {
 	const base = 26
 	const asciiOffset = 65
 
-	letters = ""
-	for index := 0; index < size; index++ {
-		letters += string(rand.Intn(base) + asciiOffset)
-	}
-
-	return
+	return generate(count, base, func(random int) string {
+		return string(random + asciiOffset)
+	})
 }
 
-func randomDigits(size int) (digits string) {
+func randomDigits(count int) string {
 	const base = 10
 
-	for index := 0; index < size; index++ {
-		digits += strconv.Itoa(rand.Intn(base))
+	return generate(count, base, func(random int) string {
+		return strconv.Itoa(random)
+	})
+}
+
+func reseed() {
+	rand.Seed(time.Now().UnixNano())
+}
+
+func generate(count, base int, mod func(random int) string) (result string) {
+	reseed()
+
+	for index := 0; index < count; index++ {
+		result += mod(rand.Intn(base))
 	}
 
 	return
