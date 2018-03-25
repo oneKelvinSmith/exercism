@@ -11,11 +11,11 @@ func SquareOfSums(n int) int {
 
 // SumOfSquares retuns the sum of squares for the first n natural numbers.
 func SumOfSquares(n int) int {
-	sum := 0
-	for i := 1; i <= n; i++ {
-		sum += i * i
-	}
-	return sum
+	return faulhaber(n)
+}
+
+func faulhaber(n int) int {
+	return n * (n + 1) * (2*n + 1) / 6
 }
 
 // Difference returns the difference between the and SquareOfSums
