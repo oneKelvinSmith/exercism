@@ -1,8 +1,8 @@
 package robotname
 
 import (
+	"fmt"
 	"math/rand"
-	"strconv"
 	"time"
 )
 
@@ -34,12 +34,8 @@ func (robot *Robot) isNamed() bool {
 }
 
 func (robot *Robot) generateName() {
-	robot.name = randomLetters(2) + randomDigits(3)
+	robot.name = fmt.Sprintf("%c%c%03d", letter(), letter(), digits())
 
-	robot.verifyName()
-}
-
-func (robot *Robot) verifyName() {
 	if used[robot.name] {
 		robot.generateName()
 	} else {
@@ -47,33 +43,23 @@ func (robot *Robot) verifyName() {
 	}
 }
 
-func randomLetters(count int) string {
-	const base = 26
+func letter() int {
+	const alphabetSize = 26
 	const asciiOffset = 65
 
-	return generate(count, base, func(random int) string {
-		return string(random + asciiOffset)
-	})
+	reseed()
+
+	return rand.Intn(alphabetSize) + asciiOffset
 }
 
-func randomDigits(count int) string {
-	const base = 10
+func digits() int {
+	const upperLimit = 1000
 
-	return generate(count, base, func(random int) string {
-		return strconv.Itoa(random)
-	})
+	reseed()
+
+	return rand.Intn(upperLimit)
 }
 
 func reseed() {
 	rand.Seed(time.Now().UnixNano())
-}
-
-func generate(count, base int, mod func(random int) string) (result string) {
-	reseed()
-
-	for index := 0; index < count; index++ {
-		result += mod(rand.Intn(base))
-	}
-
-	return
 }
