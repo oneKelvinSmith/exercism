@@ -26,7 +26,11 @@ class Prime
     private
 
     def prime?(number, primes)
-      primes.none? { |prime| (number % prime).zero? }
+      primes.none? do |prime|
+        return true if prime > Math.sqrt(number)
+
+        (number % prime).zero?
+      end
     end
   end
 end
