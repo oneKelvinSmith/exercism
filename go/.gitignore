@@ -1,0 +1,3 @@
+# ignore vgo module config files (needed for Goland)
+go.mod
+
