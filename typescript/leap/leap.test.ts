@@ -20,19 +20,19 @@ describe('A leap year', () => {
 
   describe('Additional example of a leap year that', () => {
 
-    xit('is not a leap year', () => {
+    it('is not a leap year', () => {
       expect(isLeapYear(1978)).toBeFalsy()
     })
 
-    xit('is a common leap year', () => {
+    it('is a common leap year', () => {
       expect(isLeapYear(1992)).toBeTruthy()
     })
 
-    xit('is skipped every 100 years', () => {
+    it('is skipped every 100 years', () => {
       expect(isLeapYear(2100)).toBeFalsy()
     })
 
-    xit('is reintroduced every 400 years', () => {
+    it('is reintroduced every 400 years', () => {
       expect(isLeapYear(2400)).toBeTruthy()
     })
   })
