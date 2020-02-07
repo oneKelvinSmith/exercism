@@ -1,3 +1,5 @@
 pub fn reverse(input: &str) -> String {
-    unimplemented!("Write a function to reverse {}", input);
+    let mut characters: Vec<char> = input.chars().collect();
+    characters.reverse();
+    characters.iter().collect()
 }
