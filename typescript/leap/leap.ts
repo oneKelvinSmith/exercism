@@ -3,9 +3,7 @@ function isLeapYear(year: number): boolean {
     return base % divisor === 0
   }
 
-  return divisibleBy(year, 4)
-    && !divisibleBy(year, 100)
-    || divisibleBy(year, 400)
+  return divisibleBy(year, 400) || !divisibleBy(year, 100) && divisibleBy(year, 4)
 }
 
 export default isLeapYear
