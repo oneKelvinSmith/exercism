@@ -4,18 +4,18 @@ const HOURS_IN_A_DAY: i32 = 24;
 const MINUTES_IN_AN_HOUR: i32 = 60;
 const MINUTES_IN_A_DAY: i32 = MINUTES_IN_AN_HOUR * HOURS_IN_A_DAY;
 
-#[derive(Debug, PartialEq)]
-pub struct Clock {
-    hours: i32,
-    minutes: i32,
-}
-
 fn divide(number: i32, divisor: i32) -> i32 {
     number / divisor
 }
 
 fn modulo(number: i32, modulus: i32) -> i32 {
     ((number % modulus) + modulus) % modulus
+}
+
+#[derive(Debug, PartialEq)]
+pub struct Clock {
+    hours: i32,
+    minutes: i32,
 }
 
 impl Clock {
@@ -31,7 +31,7 @@ impl Clock {
     }
 
     pub fn add_minutes(&self, minutes: i32) -> Self {
-        unimplemented!("Add {} minutes to existing Clock time", minutes);
+        Clock::new(self.hours, self.minutes + minutes)
     }
 }
 
