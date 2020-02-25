@@ -20,18 +20,28 @@ pub struct Clock {
 
 impl Clock {
     pub fn new(hours: i32, minutes: i32) -> Self {
-        let normalised_total_minutes = modulo((hours * MINUTES_IN_AN_HOUR) + minutes, MINUTES_IN_A_DAY);
-        let normalised_hours = divide(normalised_total_minutes, MINUTES_IN_AN_HOUR);
-        let normalised_minutes = modulo(normalised_total_minutes, MINUTES_IN_AN_HOUR);
+        let clock = Self { hours, minutes };
 
-        Self {
-            hours: normalised_hours,
-            minutes: normalised_minutes,
-        }
+        clock.normalise()
     }
 
     pub fn add_minutes(&self, minutes: i32) -> Self {
-        Clock::new(self.hours, self.minutes + minutes)
+        let clock = Self {
+            hours: self.hours,
+            minutes: self.minutes + minutes,
+        };
+
+        clock.normalise()
+    }
+
+    fn normalise(mut self) -> Self {
+        let normalised_total_minutes = modulo(
+            (self.hours * MINUTES_IN_AN_HOUR) + self.minutes,
+            MINUTES_IN_A_DAY,
+        );
+        self.hours = divide(normalised_total_minutes, MINUTES_IN_AN_HOUR);
+        self.minutes = modulo(normalised_total_minutes, MINUTES_IN_AN_HOUR);
+        self
     }
 }
 
