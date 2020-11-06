@@ -1,10 +1,4 @@
-(ns reverse-string
-  (:require [clojure.string :as str]))
+(ns reverse-string)
 
 (defn reverse-string [s]
-  (loop [[head & rest :as characters] (vec s) reversed []]
-    (if (empty? characters)
-      (str/join reversed)
-      (recur rest (cons head reversed)))
-    )
-  )
+  (clojure.string/join (reduce conj '() (seq s))))
