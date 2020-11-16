@@ -4,8 +4,7 @@
 (defn response-for [s]
   (let [remark (string/trim s)
         question? #(string/ends-with? % "?")
-        sensible? #(not (nil? (re-find #"[A-z]" %)))
-        forceful? #(and (sensible? %) (= % (string/upper-case %)))
+        forceful? #(and (re-find #"[A-z]" %) (= % (string/upper-case %)))
         exasperated? #(and (forceful? %) (question? %))
         silence? #(string/blank? %)]
 
@@ -14,6 +13,4 @@
       exasperated? "Calm down, I know what I'm doing!"
       forceful? "Whoa, chill out!"
       question? "Sure."
-      "Whatever."
-      ))
-  )
+      "Whatever.")))
