@@ -1,17 +1,16 @@
 (ns armstrong-numbers)
 
-(defn- digits
-  ([number]
-   (digits number ()))
-  ([n acc]
-   (if (zero? n)
-     acc
-     (digits (quot n 10) (conj acc (rem n 10))))))
+(defn- digits [number]
+  (let [base 10]
+    (loop [n number acc ()]
+      (if (zero? n)
+        acc
+        (recur (quot n base) (conj acc (rem n base)))))))
 
 (defn- exp [base exponent] (reduce * (repeat exponent base)))
 
-(defn- strongarm [number]
+(defn- strong-arm [number]
   (let [ds (digits number)]
     (reduce + (map #(exp % (count ds)) ds))))
 
-(defn armstrong? [number] (= number (strongarm number)))
+(defn armstrong? [number] (= number (strong-arm number)))
