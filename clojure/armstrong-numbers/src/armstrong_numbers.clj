@@ -11,6 +11,8 @@
 
 (defn- strong-arm [number]
   (let [ds (digits number)]
-    (reduce + (map #(exp % (count ds)) ds))))
+    (->> ds
+        (map #(exp % (count ds)))
+        (reduce +))))
 
 (defn armstrong? [number] (= number (strong-arm number)))
