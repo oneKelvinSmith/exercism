@@ -1,14 +1,13 @@
 (ns armstrong-numbers)
 
-(defn- digits [number]
-  (let [base 10 initial-ds '()]
-    (->> [initial-ds number]
-         (iterate (fn [[ds n]] [(conj ds (rem n base)) (quot n base)]))
-         (drop-while #((comp not zero?) (second %)))
-         (first)
-         (first))))
-
 (defn- exp [base exponent] (apply * (repeat exponent base)))
+
+(defn- digits [number]
+  (let [base 10]
+    (->> number
+         (iterate #(quot % base))
+         (take-while pos?)
+         (map #(rem % base)))))
 
 (defn- strong-arm [number]
   (let [ds (digits number)]
