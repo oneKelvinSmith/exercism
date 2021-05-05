@@ -18,16 +18,10 @@ public class Hamming {
         }
     }
 
-    private void validateStrands(String leftStrand, String rightStrand) {
-        if (leftStrand.length() == rightStrand.length()) {
-            return;
-        }
-        if (isEmpty(leftStrand)) {
-            throw new IllegalArgumentException("left strand must not be empty.");
-        }
-        if (isEmpty(rightStrand)) {
-            throw new IllegalArgumentException("right strand must not be empty.");
-        }
+    private void validateStrands(String leftStrand, String rightStrand) throws IllegalArgumentException {
+        if (leftStrand.length() == rightStrand.length()) return;
+        if (isEmpty(leftStrand)) throw new IllegalArgumentException("left strand must not be empty.");
+        if (isEmpty(rightStrand)) throw new IllegalArgumentException("right strand must not be empty.");
         throw new IllegalArgumentException("leftStrand and rightStrand must be of equal length.");
     }
 
