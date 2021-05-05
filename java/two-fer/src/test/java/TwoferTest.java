@@ -21,7 +21,6 @@ public class TwoferTest {
         assertEquals(expected, twofer.twofer(input));
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void aNameGiven() {
         String input = "Alice";
@@ -30,7 +29,6 @@ public class TwoferTest {
         assertEquals(expected, twofer.twofer(input));
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void anotherNameGiven() {
         String input = "Bob";
@@ -41,7 +39,6 @@ public class TwoferTest {
 
     /* Track specific */
 
-    @Ignore("Remove to run test")
     @Test
     public void emptyStringIsNotTheSameAsNull() {
         String input = "";

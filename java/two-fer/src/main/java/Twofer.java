@@ -1,5 +1,6 @@
 public class Twofer {
     public String twofer(String name) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        String who = (name == null) ? "you" : name;
+        return "One for " + who + ", one for me.";
     }
 }
