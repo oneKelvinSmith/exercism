@@ -1,24 +1,24 @@
 public class Hamming {
-    private final String leftStrand;
-    private final String rightStrand;
+    private int hammingDistance = 0;
 
     public Hamming(String leftStrand, String rightStrand) {
-        validate(leftStrand, rightStrand);
-        this.leftStrand = leftStrand;
-        this.rightStrand = rightStrand;
+        validateStrands(leftStrand, rightStrand);
+        calculateHammingDistance(leftStrand, rightStrand);
     }
 
     public int getHammingDistance() {
-        int distance = 0;
-        for (int i = 0; i < this.leftStrand.length(); i++) {
-            if (this.leftStrand.charAt(i) != this.rightStrand.charAt(i)) {
-                distance += 1;
-            }
-        }
-        return distance;
+        return this.hammingDistance;
     }
 
-    private void validate(String leftStrand, String rightStrand) {
+    private void calculateHammingDistance(String leftStrand, String rightStrand) {
+        for (int i = 0; i < leftStrand.length(); i++) {
+            if (leftStrand.charAt(i) != rightStrand.charAt(i)) {
+                this.hammingDistance += 1;
+            }
+        }
+    }
+
+    private void validateStrands(String leftStrand, String rightStrand) {
         if (leftStrand.length() == rightStrand.length()) {
             return;
         }
