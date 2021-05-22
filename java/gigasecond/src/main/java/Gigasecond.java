@@ -4,11 +4,11 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class Gigasecond {
+    private static final Duration gigasecond = Duration.ofSeconds(1_000_000_000);
     private final LocalDateTime gigamoment;
-    private final Duration gigasecond = Duration.ofSeconds(1_000_000_000);
 
     public Gigasecond(LocalDate moment) {
-        this.gigamoment = LocalDateTime.of(moment, LocalTime.MIN).plus(gigasecond);
+        this(LocalDateTime.of(moment, LocalTime.MIN));
     }
 
     public Gigasecond(LocalDateTime moment) {
