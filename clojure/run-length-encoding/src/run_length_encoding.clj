@@ -1,4 +1,5 @@
-(ns run-length-encoding)
+(ns run-length-encoding
+  (:import (java.lang Integer)))
 
 (defn run-length-encode
   "encodes a string with run-length-encoding"
@@ -13,4 +14,9 @@
 
 (defn run-length-decode
   "decodes a run-length-encoded string"
-  [cipher-text])
+  [cipher-text]
+  (let [matches (re-seq #"(\d+)?[\w\s]" cipher-text)]
+    (clojure.string/join (map (fn [group]
+                                (if (nil? (last group))
+                                  (first group)
+                                  (clojure.string/join (repeat (Integer. (last group)) (last (first group)))))) matches))))
