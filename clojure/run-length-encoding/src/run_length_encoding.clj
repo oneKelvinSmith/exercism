@@ -1,24 +1,28 @@
 (ns run-length-encoding
-  (:import (java.lang Integer))
   (:require [clojure.string :as string]))
+
+(defn- encode [[character & _ :as partition]]
+  (if (= 1 (count partition))
+    character
+    (str (count partition) character)))
 
 (defn run-length-encode
   "encodes a string with run-length-encoding"
   [plain-text]
-  (let [groups (partition-by identity plain-text)
-        encoder (fn [encoded group]
-                  (let [character (first group)
-                        frequency (count group)
-                        code (if (= 1 frequency) "" frequency)]
-                    (str encoded code character)))]
-    (reduce encoder "" groups)))
+  (->> plain-text
+       (partition-by identity)
+       (map encode)
+       (string/join)))
+
+(defn- decode [[_ number character]]
+  (if (nil? number)
+    character
+    (string/join (repeat (Integer. number) character))))
 
 (defn run-length-decode
   "decodes a run-length-encoded string"
   [cipher-text]
-  (let [groups (re-seq #"(\d+)?[\w\s]" cipher-text)
-        decoder (fn [group]
-                  (let [frequency ((fnil #(Integer. %) 1) (last group))
-                        character (last (first group))]
-                    (repeat frequency character)))]
-    (string/join (flatten (map decoder groups)))))
+  (->> cipher-text
+       (re-seq #"(\d+)?(\D)")
+       (map decode)
+       (string/join)))
