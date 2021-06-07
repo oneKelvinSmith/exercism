@@ -1,5 +1,4 @@
-(ns run-length-encoding
-  (:require [clojure.string :as string]))
+(ns run-length-encoding)
 
 (defn- encode [[character & _ :as partition]]
   (if (= 1 (count partition))
@@ -12,12 +11,12 @@
   (->> plain-text
        (partition-by identity)
        (map encode)
-       (string/join)))
+       (apply str)))
 
 (defn- decode [[_ number character]]
-  (if (nil? number)
-    character
-    (string/join (repeat (Integer. number) character))))
+  (->> character
+       (repeat ((fnil #(Integer. %) 1) number))
+       (apply str)))
 
 (defn run-length-decode
   "decodes a run-length-encoded string"
@@ -25,4 +24,4 @@
   (->> cipher-text
        (re-seq #"(\d+)?(\D)")
        (map decode)
-       (string/join)))
+       (apply str)))
