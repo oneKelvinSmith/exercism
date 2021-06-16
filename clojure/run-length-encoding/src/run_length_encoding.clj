@@ -1,9 +1,9 @@
 (ns run-length-encoding)
 
-(defn- encode [[character & _ :as partition]]
-  (if (= 1 (count partition))
-    character
-    (str (count partition) character)))
+
+(defn encode [[character & others :as partition]]
+  (cond->> character
+           (some? others) (str (count partition))))
 
 (defn run-length-encode
   "encodes a string with run-length-encoding"
@@ -13,10 +13,11 @@
        (map encode)
        (apply str)))
 
+
 (defn- decode [[_ number character]]
-  (->> character
-       (repeat ((fnil #(Integer. %) 1) number))
-       (apply str)))
+  (cond->> character
+           (some? number) (repeat (Integer. number))
+           true (apply str)))
 
 (defn run-length-decode
   "decodes a run-length-encoded string"
