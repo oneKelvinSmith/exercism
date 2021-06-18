@@ -11,14 +11,15 @@ class Scrabble {
     }
 
     private int characterScore(int c) {
-        return switch (Character.toLowerCase((char) c)) {
-            case 'q', 'z' -> 10;
-            case 'j', 'x' -> 8;
-            case 'k' -> 5;
-            case 'f', 'h', 'v', 'w', 'y' -> 4;
-            case 'b', 'c', 'm', 'p' -> 3;
-            case 'd', 'g' -> 2;
-            default -> 1;
+        return switch (Character.toUpperCase((char) c)) {
+            case 'A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T' -> 1;
+            case 'D', 'G' -> 2;
+            case 'B', 'C', 'M', 'P' -> 3;
+            case 'F', 'H', 'V', 'W', 'Y' -> 4;
+            case 'K' -> 5;
+            case 'J', 'X' -> 8;
+            case 'Q', 'Z' -> 10;
+            default -> 0;
         };
     }
 }

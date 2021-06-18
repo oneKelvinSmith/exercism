@@ -1,4 +1,3 @@
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -71,4 +70,12 @@ public class ScrabbleScoreTest {
         assertEquals(87, scrabble.getScore());
     }
 
+    @Test
+    public void testAnInvalidWord() {
+        Scrabble validScrabble = new Scrabble("lokifoundabug");
+        assertEquals(24, validScrabble.getScore());
+
+        Scrabble invalidScrabble = new Scrabble("Loki666 found a bug!");
+        assertEquals(24, invalidScrabble.getScore());
+    }
 }
