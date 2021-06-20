@@ -16,13 +16,12 @@
 
 (defn- decode [[_ number character]]
   (cond->> character
-           (some? number) (repeat (Integer. number))
-           true (apply str)))
+           (some? number) (repeat (Integer. number))))
 
 (defn run-length-decode
   "decodes a run-length-encoded string"
   [cipher-text]
   (->> cipher-text
        (re-seq #"(\d+)?(\D)")
-       (map decode)
+       (mapcat decode)
        (apply str)))
